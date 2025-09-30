@@ -6,14 +6,16 @@ type FontainesProps = {
     limit: number;
     dispo?: string;
     modele?: string;
+    commune?: string;
 }
 
-export const FetchFontaines = async({page, limit, dispo, modele}:FontainesProps) =>{
+export const FetchFontaines = async({page, limit, dispo, modele, commune}:FontainesProps) =>{
     const offset = (page - 1) * limit;
-    let url = `https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/fontaines-a-boire/records?limit=${limit}&offest=${offset}`;
+    let url = `https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/fontaines-a-boire/records?limit=${limit}&offset=${offset}`;
     const where: string[] = [];
       if (dispo) where.push(`dispo="${dispo}"`);
       if (modele) where.push(`modele="${modele}"`);
+      if (commune) where.push(`commune="${commune}"`);
 
       if (where.length > 0) {
         url += `&where=${encodeURIComponent(where.join(" AND "))}`;
