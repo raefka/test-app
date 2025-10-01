@@ -1,3 +1,4 @@
+import { Equipement, EquipementsProps } from "@/types/EquipementsType";
 import { Espace, EspacesProps } from "@/types/EspaceType";
 import { Fontaine, FontainesProps } from "@/types/FontaineType";
 import axios from "axios";
@@ -41,6 +42,26 @@ export const FetchEspaces = async({page, limit, type, arrondissement, ouvert_24h
       const res = await axios.get(url);
       if (!res) throw new Error("Erreur lors du fetch");
       return res.data as Promise<Espace>;
+
+}
+
+
+export const FetchEquipements = async({page, limit, type, payant, arrondissement, statut_ouverture}:EquipementsProps) =>{
+    const offset = (page - 1) * limit;
+    let url = `https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/ilots-de-fraicheur-equipements-activites/records?limit=${limit}&offset=${offset}`;
+    const where: string[] = [];
+      if (type) where.push(`type="${type}"`);
+      if (payant) where.push(`payant="${payant}"`);
+      if (arrondissement) where.push(`arrondissement="${arrondissement}"`);
+      if (statut_ouverture) where.push(`statut_ouverture="${statut_ouverture}"`);
+
+      if (where.length > 0) {
+        url += `&where=${encodeURIComponent(where.join(" AND "))}`;
+      }
+
+      const res = await axios.get(url);
+      if (!res) throw new Error("Erreur lors du fetch");
+      return res.data as Promise<Equipement>;
 
 }
 

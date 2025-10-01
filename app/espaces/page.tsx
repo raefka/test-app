@@ -15,7 +15,7 @@ import { FetchEspaces } from '@/utils';
 import EspacesFilter from '@/components/EspacesFilter';
 
 const Espaces = () => {
-  const {  searchParams } = useUpdateSearchParams();
+  const { searchParams } = useUpdateSearchParams();
   const page = Number(searchParams.get("page") ?? 1);
   const limit = Number(searchParams.get("limit") ?? 10);
   const type = searchParams.get("type") ?? "";
