@@ -1,13 +1,8 @@
-import { Fontaine } from "@/types/FontaineType";
+import { Espace, EspacesProps } from "@/types/EspaceType";
+import { Fontaine, FontainesProps } from "@/types/FontaineType";
 import axios from "axios";
 
-type FontainesProps = {
-    page: number;
-    limit: number;
-    dispo?: string;
-    modele?: string;
-    commune?: string;
-}
+
 
 export const FetchFontaines = async({page, limit, dispo, modele, commune}:FontainesProps) =>{
     const offset = (page - 1) * limit;
@@ -24,6 +19,28 @@ export const FetchFontaines = async({page, limit, dispo, modele, commune}:Fontai
       const res = await axios.get(url);
       if (!res) throw new Error("Erreur lors du fetch");
       return res.data as Promise<Fontaine>;
+
+}
+
+
+
+export const FetchEspaces = async({page, limit, type, arrondissement, ouvert_24h, canicule_ouverture, ouverture_estivale_nocturne}:EspacesProps) =>{
+    const offset = (page - 1) * limit;
+    let url = `https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/ilots-de-fraicheur-espaces-verts-frais/records?limit=${limit}&offset=${offset}`;
+    const where: string[] = [];
+      if (type) where.push(`type="${type}"`);
+      if (arrondissement) where.push(`arrondissement="${arrondissement}"`);
+      if (ouvert_24h) where.push(`ouvert_24h="${ouvert_24h}"`);
+      if (canicule_ouverture) where.push(`canicule_ouverture="${canicule_ouverture}"`);
+      if (ouverture_estivale_nocturne) where.push(`ouverture_estivale_nocturne="${ouverture_estivale_nocturne}"`);
+
+      if (where.length > 0) {
+        url += `&where=${encodeURIComponent(where.join(" AND "))}`;
+      }
+
+      const res = await axios.get(url);
+      if (!res) throw new Error("Erreur lors du fetch");
+      return res.data as Promise<Espace>;
 
 }
 

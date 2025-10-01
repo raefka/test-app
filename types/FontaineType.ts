@@ -37,3 +37,12 @@ export interface Geometry {
 
 export interface Properties {
 }
+
+
+export type FontainesProps = {
+    page: number;
+    limit: number;
+    dispo?: string;
+    modele?: string;
+    commune?: string;
+}

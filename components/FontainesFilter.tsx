@@ -9,6 +9,7 @@ import { useUpdateSearchParams } from "@/hooks/useUpdateSearchParams";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { communes } from "@/constants";
+import { Button } from "./ui/button";
 
 const FontainesFilter = () => {
   const { updateSearchParams, searchParams } = useUpdateSearchParams();
@@ -52,7 +53,7 @@ const FontainesFilter = () => {
       <div className="flex flex-col gap-2">
         <Label htmlFor="commune">Commune</Label>
         <Select
-          onValueChange={(value) => updateSearchParams({ commune: value })}
+          onValueChange={(value) => updateSearchParams({ commune: value , page:1 })}
           value={commune}
         >
           <SelectTrigger className="w-[250px] ">
@@ -67,6 +68,8 @@ const FontainesFilter = () => {
           </SelectContent>
         </Select>
       </div>
+
+      <Button className="p-2 bg-red-500 hover:bg-red-600 text-white font-bold text-lg mt-2" onClick={() => updateSearchParams({ dispo: "", modele: "", commune: "", page: 1 })}>Reset Filters</Button>
     </div>
   );
 };

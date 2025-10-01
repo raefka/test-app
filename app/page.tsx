@@ -30,7 +30,7 @@ export default function FontaineTable() {
     },
   });
 
-  if (isLoading) return <p>Chargement...</p>;
+  if (isLoading) return <div className="w-full h-[450px] flex items-center justify-center "><div className="border-primary flex h-10 w-10 animate-spin items-center justify-center rounded-full border-4 border-t-transparent"/></div>;
   if (isError) return <p>Erreur lors du chargement</p>;
 
   const fontaines = data!.results;
@@ -56,13 +56,13 @@ export default function FontaineTable() {
         <TableBody>
           {fontaines.map((fontaine) => (
             <TableRow key={fontaine.gid}>
-              <TableCell>{fontaine.modele}</TableCell>
-              <TableCell>{fontaine.voie}</TableCell>
-              <TableCell>{fontaine.commune}</TableCell>
-              <TableCell>{fontaine.dispo}</TableCell>
-              <TableCell>{fontaine.debut_ind ?? "N/A"}</TableCell>
-              <TableCell>{fontaine.fin_ind ?? "N/A"}</TableCell>
-              <TableCell>{fontaine.motif_ind ?? "N/A"}</TableCell>
+              <TableCell className="font-semibold text-md">{fontaine.modele}</TableCell>
+              <TableCell className="font-semibold text-md">{fontaine.voie}</TableCell>
+              <TableCell className="font-semibold text-md">{fontaine.commune}</TableCell>
+              <TableCell className={fontaine.dispo === "OUI" ? "text-green-500 font-semibold text-md" : "text-red-500 font-semibold text-md" }>{fontaine.dispo}</TableCell>
+              <TableCell className="font-semibold text-md">{fontaine.debut_ind ?? "N/A"}</TableCell>
+              <TableCell className="font-semibold text-md">{fontaine.fin_ind ?? "N/A"}</TableCell>
+              <TableCell className="font-semibold text-md">{fontaine.motif_ind ?? "N/A"}</TableCell>
             </TableRow>
           ))}
         </TableBody>

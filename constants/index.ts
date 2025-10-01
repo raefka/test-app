@@ -28,3 +28,41 @@ export const communes = [
   "SAINT-OUEN",
   "THIAIS",
 ];
+
+export const espacesTypes = [
+  "Bois",
+  "Cimetières",
+  "Cimetières non parisiens",
+  "Décorations sur la voie publique",
+  "Ephémères, partagés, pédagogiques",
+  "Jardinets décoratifs",
+  "Jardins d'Etat",
+  "Jardins grandes institutions",
+  "Jardins privatifs",
+  "Promenades ouvertes"
+];
+
+export const espacesArrondissements = [
+  "75001",
+  "75002",
+  "75003",
+  "75004",
+  "75005",
+  "75006",
+  "75007",
+  "75008",
+  "75009",
+  "75010",
+  "75011",
+  "75012",
+  "75013",
+  "75014",
+  "75015",
+  "75016",
+  "75017",
+  "75018",
+  "75019",
+  "75020",
+  "75116",
+  "94300",
+];
