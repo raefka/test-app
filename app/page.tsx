@@ -81,37 +81,48 @@ export default function FontaineTable() {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {fontaines.map((fontaine) => (
-            <TableRow key={fontaine.gid}>
-              <TableCell className="font-semibold text-md font-title">
-                {fontaine.modele}
-              </TableCell>
-              <TableCell className="font-semibold text-md font-title">
-                {fontaine.voie}
-              </TableCell>
-              <TableCell className="font-semibold text-md font-title">
-                {fontaine.commune}
-              </TableCell>
+          {fontaines.length === 0 ? (
+            <TableRow>
               <TableCell
-                className={
-                  fontaine.dispo === "OUI"
-                    ? "text-green-500 font-semibold text-md font-title"
-                    : "text-red-500 font-semibold text-md font-title"
-                }
+                colSpan={7}
+                className="text-center text-primary font-title py-8"
               >
-                {fontaine.dispo}
-              </TableCell>
-              <TableCell className="font-semibold text-md font-title">
-                {formatValue(fontaine.debut_ind)}
-              </TableCell>
-              <TableCell className="font-semibold text-md font-title">
-                {formatValue(fontaine.fin_ind)}
-              </TableCell>
-              <TableCell className="font-semibold text-md font-title">
-                {formatValue(fontaine.motif_ind)}
+                Aucune donnée trouvée.
               </TableCell>
             </TableRow>
-          ))}
+          ) : (
+            fontaines.map((fontaine) => (
+              <TableRow key={fontaine.gid}>
+                <TableCell className="font-semibold text-md font-title">
+                  {fontaine.modele}
+                </TableCell>
+                <TableCell className="font-semibold text-md font-title">
+                  {fontaine.voie}
+                </TableCell>
+                <TableCell className="font-semibold text-md font-title">
+                  {fontaine.commune}
+                </TableCell>
+                <TableCell
+                  className={
+                    fontaine.dispo === "OUI"
+                      ? "text-green-500 font-semibold text-md font-title"
+                      : "text-red-500 font-semibold text-md font-title"
+                  }
+                >
+                  {fontaine.dispo}
+                </TableCell>
+                <TableCell className="font-semibold text-md font-title">
+                  {formatValue(fontaine.debut_ind)}
+                </TableCell>
+                <TableCell className="font-semibold text-md font-title">
+                  {formatValue(fontaine.fin_ind)}
+                </TableCell>
+                <TableCell className="font-semibold text-md font-title">
+                  {formatValue(fontaine.motif_ind)}
+                </TableCell>
+              </TableRow>
+            ))
+          )}
         </TableBody>
       </Table>
 

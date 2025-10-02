@@ -66,8 +66,15 @@ const Espaces = () => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {espaces.map((espace,index) => (
-            <TableRow key={index}>
+            {espaces.length === 0 ? (
+            <TableRow>
+              <TableCell colSpan={15} className="text-center text-primary font-title py-8">
+              Aucun espace trouvé.
+              </TableCell>
+            </TableRow>
+            ) : (
+            espaces.map((espace, index) => (
+              <TableRow key={index}>
               <TableCell className="font-semibold text-md font-title ">{espace.nom}</TableCell>
               <TableCell className="font-semibold text-md font-title">{espace.type}</TableCell>
               <TableCell className="font-semibold text-md font-title">{espace.adresse}</TableCell>
@@ -83,8 +90,9 @@ const Espaces = () => {
               <TableCell className="font-semibold text-md font-title">{espace.horaires_vendredi ?? "N/A"}</TableCell>
               <TableCell className="font-semibold text-md font-title">{espace.horaires_samedi ?? "N/A"}</TableCell>
               <TableCell className="font-semibold text-md font-title">{espace.horaires_dimanche ?? "N/A"}</TableCell>
-            </TableRow>
-          ))}
+              </TableRow>
+            ))
+            )}
         </TableBody>
       </Table>
 

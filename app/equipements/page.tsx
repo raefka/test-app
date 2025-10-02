@@ -87,8 +87,15 @@ const Equipements = () => {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {equipements.map((equipement, index) => (
-                <TableRow key={index}>
+                {equipements.length === 0 ? (
+                <TableRow>
+                  <TableCell colSpan={14} className="text-center text-primary font-title  py-8">
+                  Aucun équipement trouvé.
+                  </TableCell>
+                </TableRow>
+                ) : (
+                equipements.map((equipement, index) => (
+                  <TableRow key={index}>
                   <TableCell className="font-semibold text-md font-title">
                     {equipement.nom}
                   </TableCell>
@@ -103,18 +110,18 @@ const Equipements = () => {
                   </TableCell>
                   <TableCell
                     className={
-                      equipement.payant === "Oui"
-                        ? "text-green-500 font-semibold text-md font-title"
-                        : "text-red-500 font-semibold text-md font-title"
+                    equipement.payant === "Oui"
+                      ? "text-green-500 font-semibold text-md font-title"
+                      : "text-red-500 font-semibold text-md font-title"
                     }
                   >
                     {equipement.payant ?? "N/A"}
                   </TableCell>
                   <TableCell
                     className={
-                      equipement.statut_ouverture === "Oui"
-                        ? "text-green-500 font-semibold text-md font-title"
-                        : "text-red-500 font-semibold text-md font-title"
+                    equipement.statut_ouverture === "Ouvert"
+                      ? "text-green-500 font-semibold text-md font-title"
+                      : "text-red-500 font-semibold text-md font-title"
                     }
                   >
                     {equipement.statut_ouverture ?? "N/A"}
@@ -143,8 +150,9 @@ const Equipements = () => {
                   <TableCell className="font-semibold text-md font-title">
                     {equipement.horaires_dimanche ?? "N/A"}
                   </TableCell>
-                </TableRow>
-              ))}
+                  </TableRow>
+                ))
+                )}
             </TableBody>
           </Table>
 
