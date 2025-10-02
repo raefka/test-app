@@ -18,9 +18,9 @@ const FontainesFilter = () => {
   const commune = searchParams.get("commune") ?? "";
 
   return (
-    <div className="flex gap-4 mb-4 items-center justify-center">
+    <div className="flex flex-col md:flex-row gap-2 mb-4 items-center justify-center ">
       <div className="flex flex-col gap-2">
-        <Label htmlFor="dispo">Disponibilté</Label>
+        <Label htmlFor="dispo" className="font-title text-primary font-semibold">Disponibilté</Label>
         <Select
           onValueChange={(value) =>
             updateSearchParams({ dispo: value, page: 1 })
@@ -37,8 +37,8 @@ const FontainesFilter = () => {
         </Select>
       </div>
 
-      <div className="grid w-full max-w-sm items-center gap-2">
-        <Label htmlFor="modele">Modèle</Label>
+      <div className="grid w-full  items-center justify-center gap-2">
+        <Label htmlFor="modele" className="font-title text-primary font-semibold">Modèle</Label>
         <Input
           type="text"
           id="modele"
@@ -47,16 +47,17 @@ const FontainesFilter = () => {
           onChange={(e) =>
             updateSearchParams({ modele: e.target.value, page: 1 })
           }
+          className="w-[180px]"
         />
       </div>
 
       <div className="flex flex-col gap-2">
-        <Label htmlFor="commune">Commune</Label>
+        <Label htmlFor="commune" className="font-title text-primary font-semibold">Commune</Label>
         <Select
           onValueChange={(value) => updateSearchParams({ commune: value , page:1 })}
           value={commune}
         >
-          <SelectTrigger className="w-[250px] ">
+          <SelectTrigger className="w-[180px]">
             <SelectValue placeholder="Choisir une commune" />
           </SelectTrigger>
           <SelectContent className="h-[250px]">
@@ -69,7 +70,7 @@ const FontainesFilter = () => {
         </Select>
       </div>
 
-      <Button className="p-2 bg-red-500 hover:bg-red-600 text-white font-bold text-lg mt-2" onClick={() => updateSearchParams({ dispo: "", modele: "", commune: "", page: 1 })}>Reset Filters</Button>
+      <Button className="p-2b bg-primary hover:bg-primary/90 text-white font-bold text-lg mt-2" onClick={() => updateSearchParams({ dispo: "", modele: "", commune: "", page: 1 })}>Réinitialiser</Button>
     </div>
   );
 };

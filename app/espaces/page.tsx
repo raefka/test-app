@@ -41,48 +41,48 @@ const Espaces = () => {
 
   return (
     <div className='p-4'>
-      <h1 className='text-xl font-bold mb-3'>
+      <h1 className='text-4xl font-bold mb-4 text-center font-title text-primary'>
         Espaces Verts
       </h1>
       <EspacesFilter />
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead>Nom</TableHead>
-            <TableHead>Type</TableHead>
-            <TableHead>Adresse</TableHead>
-            <TableHead>Arrondissement</TableHead>
-            <TableHead>ouvert_24h</TableHead>
-            <TableHead>Canicule_ouverture</TableHead>
-            <TableHead>Ouverture_estivale_nocturne</TableHead>
-            <TableHead>horaires_periode</TableHead>
-            <TableHead>horaires_lundi</TableHead>
-            <TableHead>horaires_mardi</TableHead>
-            <TableHead>horaires_mercredi</TableHead>
-            <TableHead>horaires_jeudi</TableHead>
-            <TableHead>horaires_vendredi</TableHead>
-            <TableHead>horaires_samedi</TableHead>
-            <TableHead>horaires_dimanche</TableHead>
+            <TableHead className="font-title text-primary font-semibold text-lg">Nom</TableHead>
+            <TableHead className="font-title text-primary font-semibold text-lg">Type</TableHead>
+            <TableHead className="font-title text-primary font-semibold text-lg">Adresse</TableHead>
+            <TableHead className="font-title text-primary font-semibold text-lg">Arrondissement</TableHead>
+            <TableHead className="font-title text-primary font-semibold text-lg">ouvert_24h</TableHead>
+            <TableHead className="font-title text-primary font-semibold text-lg">Canicule_ouverture</TableHead>
+            <TableHead className="font-title text-primary font-semibold text-lg">Ouverture_estivale_nocturne</TableHead>
+            <TableHead className="font-title text-primary font-semibold text-lg">horaires_periode</TableHead>
+            <TableHead className="font-title text-primary font-semibold text-lg">horaires_lundi</TableHead>
+            <TableHead className="font-title text-primary font-semibold text-lg">horaires_mardi</TableHead>
+            <TableHead className="font-title text-primary font-semibold text-lg">horaires_mercredi</TableHead>
+            <TableHead className="font-title text-primary font-semibold text-lg">horaires_jeudi</TableHead>
+            <TableHead className="font-title text-primary font-semibold text-lg">horaires_vendredi</TableHead>
+            <TableHead className="font-title text-primary font-semibold text-lg">horaires_samedi</TableHead>
+            <TableHead className="font-title text-primary font-semibold text-lg">horaires_dimanche</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
           {espaces.map((espace,index) => (
             <TableRow key={index}>
-              <TableCell className="font-semibold text-md">{espace.nom}</TableCell>
-              <TableCell className="font-semibold text-md">{espace.type}</TableCell>
-              <TableCell className="font-semibold text-md">{espace.adresse}</TableCell>
-              <TableCell className="font-semibold text-md">{espace.arrondissement}</TableCell>
-              <TableCell className={espace.ouvert_24h === "Oui" ? "text-green-500 font-semibold text-md" : "text-red-500 font-semibold text-md" }>{espace.ouvert_24h}</TableCell>
-              <TableCell className={espace.canicule_ouverture === "Oui" ? "text-green-500 font-semibold text-md" : "text-red-500 font-semibold text-md" }>{espace.canicule_ouverture ?? "N/A"}</TableCell>
-              <TableCell className={espace.ouverture_estivale_nocturne === "Oui" ? "text-green-500 font-semibold text-md" : "text-red-500 font-semibold text-md" }>{espace.ouverture_estivale_nocturne ?? "N/A"}</TableCell>
-              <TableCell className="font-semibold text-md">{espace.horaires_periode ?? "N/A"}</TableCell>
-              <TableCell className="font-semibold text-md">{espace.horaires_lundi ?? "N/A"}</TableCell>
-              <TableCell className="font-semibold text-md">{espace.horaires_mardi ?? "N/A"}</TableCell>
-              <TableCell className="font-semibold text-md">{espace.horaires_mercredi ?? "N/A"}</TableCell>
-              <TableCell className="font-semibold text-md">{espace.horaires_jeudi ?? "N/A"}</TableCell>
-              <TableCell className="font-semibold text-md">{espace.horaires_vendredi ?? "N/A"}</TableCell>
-              <TableCell className="font-semibold text-md">{espace.horaires_samedi ?? "N/A"}</TableCell>
-              <TableCell className="font-semibold text-md">{espace.horaires_dimanche ?? "N/A"}</TableCell>
+              <TableCell className="font-semibold text-md font-title ">{espace.nom}</TableCell>
+              <TableCell className="font-semibold text-md font-title">{espace.type}</TableCell>
+              <TableCell className="font-semibold text-md font-title">{espace.adresse}</TableCell>
+              <TableCell className="font-semibold text-md font-title">{espace.arrondissement}</TableCell>
+              <TableCell className={espace.ouvert_24h === "Oui" ? "text-green-500 font-semibold text-md font-title" : "text-red-500 font-semibold text-md font-title" }>{espace.ouvert_24h}</TableCell>
+              <TableCell className={espace.canicule_ouverture === "Oui" ? "text-green-500 font-semibold text-md font-title" : "text-red-500 font-semibold text-md font-title" }>{espace.canicule_ouverture ?? "N/A"}</TableCell>
+              <TableCell className={espace.ouverture_estivale_nocturne === "Oui" ? "text-green-500 font-semibold text-md font-title" : "text-red-500 font-semibold text-md font-title" }>{espace.ouverture_estivale_nocturne ?? "N/A"}</TableCell>
+              <TableCell className="font-semibold text-md font-title">{espace.horaires_periode ?? "N/A"}</TableCell>
+              <TableCell className="font-semibold text-md font-title">{espace.horaires_lundi ?? "N/A"}</TableCell>
+              <TableCell className="font-semibold text-md font-title">{espace.horaires_mardi ?? "N/A"}</TableCell>
+              <TableCell className="font-semibold text-md font-title">{espace.horaires_mercredi ?? "N/A"}</TableCell>
+              <TableCell className="font-semibold text-md font-title">{espace.horaires_jeudi ?? "N/A"}</TableCell>
+              <TableCell className="font-semibold text-md font-title">{espace.horaires_vendredi ?? "N/A"}</TableCell>
+              <TableCell className="font-semibold text-md font-title">{espace.horaires_samedi ?? "N/A"}</TableCell>
+              <TableCell className="font-semibold text-md font-title">{espace.horaires_dimanche ?? "N/A"}</TableCell>
             </TableRow>
           ))}
         </TableBody>

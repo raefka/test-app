@@ -46,7 +46,7 @@ export const FetchEspaces = async({page, limit, type, arrondissement, ouvert_24h
 }
 
 
-export const FetchEquipements = async({page, limit, type, payant, arrondissement, statut_ouverture}:EquipementsProps) =>{
+export const FetchEquipements = async({page, limit, type, payant, arrondissement, statut_ouverture,orderBy}:EquipementsProps) =>{
     const offset = (page - 1) * limit;
     let url = `https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/ilots-de-fraicheur-equipements-activites/records?limit=${limit}&offset=${offset}`;
     const where: string[] = [];
@@ -59,9 +59,27 @@ export const FetchEquipements = async({page, limit, type, payant, arrondissement
         url += `&where=${encodeURIComponent(where.join(" AND "))}`;
       }
 
+      if(orderBy){
+        url += `&order_by=${orderBy}`;
+      }
+
       const res = await axios.get(url);
       if (!res) throw new Error("Erreur lors du fetch");
       return res.data as Promise<Equipement>;
 
 }
+
+export const formatValue = (value?: string | null) => {
+  if (!value) return "N/A";
+
+  const date = new Date(value);
+  if (!isNaN(date.getTime())) {
+    return new Intl.DateTimeFormat("fr-FR", {
+      dateStyle: "medium",
+      timeStyle: "short",
+    }).format(date);
+  }
+
+  return value;
+};
 

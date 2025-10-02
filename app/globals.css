@@ -112,6 +112,11 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+@theme inline {
+  --font-title: "Nexa", sans-serif;
+  --color-primary: #5f259f;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

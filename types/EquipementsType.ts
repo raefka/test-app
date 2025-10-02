@@ -51,4 +51,5 @@ export type EquipementsProps = {
     payant?:string;
     arrondissement?:string;
     statut_ouverture?:string;
+    orderBy?:string;
 }

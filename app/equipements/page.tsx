@@ -22,6 +22,8 @@ const Equipements = () => {
   const payant = searchParams.get("payant") ?? "";
   const arrondissement = searchParams.get("arrondissement") ?? "";
   const statut_ouverture = searchParams.get("statut_ouverture") ?? "";
+  const orderBy = searchParams.get("orderBy") ?? "";
+
 
   const { data, isLoading, isError } = useQuery({
     queryKey: [
@@ -32,6 +34,7 @@ const Equipements = () => {
       arrondissement,
       payant,
       statut_ouverture,
+      orderBy
     ],
     queryFn: async () => {
       const equipements = await FetchEquipements({
@@ -41,6 +44,7 @@ const Equipements = () => {
         arrondissement,
         payant,
         statut_ouverture,
+        orderBy
       });
       return equipements;
     },
@@ -59,49 +63,49 @@ const Equipements = () => {
   const totalPages = Math.ceil(total / limit);
   return (
     <div className="p-4 flex flex-col gap-4">
-      <h1>Equipements/Activités</h1>
-      <div className="flex gap-4">
+      <h1 className="text-4xl font-bold mb-4 text-center font-title text-primary">Equipements/Activités</h1>
+      <div className="flex flex-col md:flex-row gap-4 justify-center items-center md:items-start md:justify-start">
         <EquipementsFilter />
-        <div className="flex flex-col gap-2 w-3/4">
+        <div className="flex flex-col gap-2 w-full md:w-3/4">
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead>Nom</TableHead>
-                <TableHead>Type</TableHead>
-                <TableHead>Adresse</TableHead>
-                <TableHead>Arrondissement</TableHead>
-                <TableHead>payant</TableHead>
-                <TableHead>statut_ouverture</TableHead>
-                <TableHead>horaires_periode</TableHead>
-                <TableHead>horaires_lundi</TableHead>
-                <TableHead>horaires_mardi</TableHead>
-                <TableHead>horaires_mercredi</TableHead>
-                <TableHead>horaires_jeudi</TableHead>
-                <TableHead>horaires_vendredi</TableHead>
-                <TableHead>horaires_samedi</TableHead>
-                <TableHead>horaires_dimanche</TableHead>
+                <TableHead className="font-title text-primary font-semibold text-lg">Nom</TableHead>
+                <TableHead className="font-title text-primary font-semibold text-lg">Type</TableHead>
+                <TableHead className="font-title text-primary font-semibold text-lg">Adresse</TableHead>
+                <TableHead className="font-title text-primary font-semibold text-lg">Arrondissement</TableHead>
+                <TableHead className="font-title text-primary font-semibold text-lg">payant</TableHead>
+                <TableHead className="font-title text-primary font-semibold text-lg">statut_ouverture</TableHead>
+                <TableHead className="font-title text-primary font-semibold text-lg">horaires_periode</TableHead>
+                <TableHead className="font-title text-primary font-semibold text-lg">horaires_lundi</TableHead>
+                <TableHead className="font-title text-primary font-semibold text-lg">horaires_mardi</TableHead>
+                <TableHead className="font-title text-primary font-semibold text-lg">horaires_mercredi</TableHead>
+                <TableHead className="font-title text-primary font-semibold text-lg">horaires_jeudi</TableHead>
+                <TableHead className="font-title text-primary font-semibold text-lg">horaires_vendredi</TableHead>
+                <TableHead className="font-title text-primary font-semibold text-lg">horaires_samedi</TableHead>
+                <TableHead className="font-title text-primary font-semibold text-lg">horaires_dimanche</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               {equipements.map((equipement, index) => (
                 <TableRow key={index}>
-                  <TableCell className="font-semibold text-md">
+                  <TableCell className="font-semibold text-md font-title">
                     {equipement.nom}
                   </TableCell>
-                  <TableCell className="font-semibold text-md">
+                  <TableCell className="font-semibold text-md font-title">
                     {equipement.type}
                   </TableCell>
-                  <TableCell className="font-semibold text-md">
+                  <TableCell className="font-semibold text-md font-title">
                     {equipement.adresse}
                   </TableCell>
-                  <TableCell className="font-semibold text-md">
+                  <TableCell className="font-semibold text-md font-title">
                     {equipement.arrondissement}
                   </TableCell>
                   <TableCell
                     className={
                       equipement.payant === "Oui"
-                        ? "text-green-500 font-semibold text-md"
-                        : "text-red-500 font-semibold text-md"
+                        ? "text-green-500 font-semibold text-md font-title"
+                        : "text-red-500 font-semibold text-md font-title"
                     }
                   >
                     {equipement.payant ?? "N/A"}
@@ -109,34 +113,34 @@ const Equipements = () => {
                   <TableCell
                     className={
                       equipement.statut_ouverture === "Oui"
-                        ? "text-green-500 font-semibold text-md"
-                        : "text-red-500 font-semibold text-md"
+                        ? "text-green-500 font-semibold text-md font-title"
+                        : "text-red-500 font-semibold text-md font-title"
                     }
                   >
                     {equipement.statut_ouverture ?? "N/A"}
                   </TableCell>
-                  <TableCell className="font-semibold text-md">
+                  <TableCell className="font-semibold text-md font-title">
                     {equipement.horaires_periode ?? "N/A"}
                   </TableCell>
-                  <TableCell className="font-semibold text-md">
+                  <TableCell className="font-semibold text-md font-title">
                     {equipement.horaires_lundi ?? "N/A"}
                   </TableCell>
-                  <TableCell className="font-semibold text-md">
+                  <TableCell className="font-semibold text-md font-title">
                     {equipement.horaires_mardi ?? "N/A"}
                   </TableCell>
-                  <TableCell className="font-semibold text-md">
+                  <TableCell className="font-semibold text-md font-title">
                     {equipement.horaires_mercredi ?? "N/A"}
                   </TableCell>
-                  <TableCell className="font-semibold text-md">
+                  <TableCell className="font-semibold text-md font-title">
                     {equipement.horaires_jeudi ?? "N/A"}
                   </TableCell>
-                  <TableCell className="font-semibold text-md">
+                  <TableCell className="font-semibold text-md font-title">
                     {equipement.horaires_vendredi ?? "N/A"}
                   </TableCell>
-                  <TableCell className="font-semibold text-md">
+                  <TableCell className="font-semibold text-md font-title">
                     {equipement.horaires_samedi ?? "N/A"}
                   </TableCell>
-                  <TableCell className="font-semibold text-md">
+                  <TableCell className="font-semibold text-md font-title">
                     {equipement.horaires_dimanche ?? "N/A"}
                   </TableCell>
                 </TableRow>

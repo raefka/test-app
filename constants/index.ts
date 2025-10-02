@@ -1,3 +1,9 @@
+export const links = [
+    { href: "/", label: "Fontaines à boire" },
+    { href: "/espaces", label: "Espaces verts" },
+    { href: "/equipements", label: "Equipements/Activités" },
+  ];
+
 export const communes = [
   "BAGNEUX",
   "IVRY-SUR-SEINE",
